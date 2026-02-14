@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodigy Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Weather Icons (from a CDN or just use FontAwesome for simplicity first, but let's try to map WMO codes to FA icons) -->
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <header>
+            <h1>PRODIGY <span>WEATHER</span></h1>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name..." autocomplete="off">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+            <button id="locationBtn" title="Use Current Location"><i class="fas fa-location-arrow"></i></button>
+        </div>
+
+        <div class="error-message" id="errorMsg"></div>
+
+        <!-- Weather Card -->
+        <div class="weather-card" id="weatherCard">
+            <div class="weather-header">
+                <div>
+                    <h2 class="city-name" id="cityName">New York</h2>
+                    <p class="date" id="currentDate">Fri, 13 Oct</p>
+                </div>
+                <div class="weather-icon-container">
+                    <i class="fas fa-sun" id="weatherIcon"></i>
+                </div>
+            </div>
+
+            <div class="weather-body">
+                <div class="temp-container">
+                    <span class="temperature" id="temperature">24</span>
+                    <span class="unit">°C</span>
+                </div>
+                <p class="condition" id="condition">Clear Sky</p>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <i class="fas fa-wind"></i>
+                    <div>
+                        <span class="value" id="windSpeed">12 km/h</span>
+                        <span class="label">Wind</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-tint"></i>
+                    <!-- Humidity isn't essentially in current_weather of open-meteo basic, but requested 'relevant info'. We might need 'relativehumidity_2m' current parameter -->
+                    <div>
+                        <span class="value" id="humidity">45%</span>
+                        <span class="label">Humidity</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-compress-arrows-alt"></i> <!-- Pressure can be gotten too -->
+                    <div>
+                        <span class="value" id="pressure">1015 hPa</span>
+                        <span class="label">Pressure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loader" id="loader"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
